@@ -15,6 +15,7 @@ Step 13: Now Give project name: MavenJava_Build, Which build: Check the boxstabl
 Step 14: Click Add Build Step-> Invoke top-level Maven targets-> Type MAVEN_HOME in Maven version, Goals: test.
 Step 15: Click on Post build actions->Archive the artifacts, in Files to archive type **/*.
 Step 16: Now click apply and save.  Now run the project.
+
 Steps for Maven Web Automation:
 Step 1: Open Jenkins in local host: 8080/ and click on a new item present in the left side. 
 Step 2: Select a new Freestyle Project give name MavenWeb_Build and then click ok.
@@ -62,5 +63,66 @@ o	Poll SCM: As with the freestyle pipeline, Poll SCM is used to trigger builds b
 o	Scripted Pipeline for Java Project: Creating a scripted pipeline for a Maven Java project, integrating Poll SCM to ensure the pipeline runs automatically when changes are detected.
 
 
+
+
+Creating a Scripted pipeline using Jenkins:
+Pipeline Script:
+pipeline {
+    agent any
+    tools{
+        maven 'Maven'
+        git 'GIT_HOME'
+    }
+    stages {
+        stage('git repo & clean') {
+            steps {
+                //bat "rmdir  /s /q maven_java"
+                bat "git clone https://github.com/ArunGarimella04/maven_java.git"
+                bat "mvn clean -f maven_java"
+            }
+        }
+        stage('install') {
+            steps {
+                bat "mvn install -f maven_java" //project name
+            }
+        }
+        stage('test') {
+            steps {
+                bat "mvn test -f maven_java"
+            }
+        }
+        stage('package') {
+            steps {
+                bat "mvn package -f maven_java"
+            }
+        }
+    }
+}
+
+Steps to create a Build Trigger for maven Java project using poll SCM:
+
+1. Create a Jenkins Pipeline.
+ 
+2. Select “Build periodically” in Build Triggers section and type “H/15 * * * *” in the description.
+ 
+3.  Add your pipeline script in the Pipeline definition section.
+ 
+4.  Click on Build Now option and wait for the build to complete.
+ 
+5. You will see a “BUILD SUCCESS” output in the Console Output.
+
+
+Steps to create a Build Trigger for maven Web project using poll SCM:
+1.	Select an existing maven web build project and go to configure.
+2.	Select poll SCM option from “BUILD TRIGGERS”.
+3.	Type “H/2 * * * *” in the description.
+
+4.	Click on Build now.
+
+5.	Open tomcat server and click on “/Webpath” in “manager app” and look for output. 
+6.	You have successfully created a maven project with poll SCM.
+
+Result: 
+Built CI/CD pipelines using Jenkins for Maven Java and web projects. You will have experience with both freestyle and scripted pipelines, and you will understand how to configure Poll SCM to automate the build process based on repository changes. This will enhance your skills in CI/CD automation, pipeline configuration, and continuous delivery practices.
 
 
