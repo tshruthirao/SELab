@@ -1,0 +1,150 @@
+1.	Go to course invitation mail and click on start
+2.	Opens the aws academy, select the student login and enter the email and password details 
+3.	Click on Modules
+4.	Scroll down and select Lunch AWS Academy Lab- start Lab
+
+5.	Click on start lab
+
+6.	Click on AWS
+
+7.	Click on EC2
+
+8.	Click on Launch Instance
+
+9.	Give name and select ubuntu under application
+
+10.	Make sure  AMI and Architecture are there as shown
+ 
+11.	Click on create-new key pair
+ 
+
+12.	Give KeyPair name and click on create key pair
+
+13.	Save the .pem file
+
+14.	In network setting check all the checkboxes and click on launch instance which is at the bottom right to the page
+15.	Wait for the Success message.
+16.	Now click on the instances
+
+17.	You can see MyExampleWebServer is Running and wait for it to initialize
+
+18.	You have get 2 tests passes. Now check the box and click on connect.
+
+19.	Copy the path of .pem file that you saved earlier
+20.	Open CMD and navigate to that path
+21.	Go to SSh and copy the command which is present at the below
+22.	Run the command in the terminal
+23.	Run the following commands
+
+24.	Create basic index.html file 
+25.	Open git Bash
+
+26.	Run the following commands
+27.	Create git repo
+
+28.	Now run the following commands
+
+29.	You can now see index.html in github
+
+30.	Copy http path
+31.	Clone the repository
+32.	Navigate to the cloned folder
+33.	Write the following data in Dockerfile and click ctrl+o  and ctrl-x
+34.	Build docker image by executing the following command
+35.	Run the container
+36.	Click on
+37.	Copy public ip 
+38.	Paste it in the browser
+39.	Run the following command to stop the container
+40.	Click on terminate instances
+41.	Now click on end lab
+ 
+
+
+
+
+MAVENWEB
+1.	Click on start lab
+2.	Click on AWS
+3.	Click on EC2
+4.	Click on launch instance
+5.	Give name
+6.	Create new key or use existing key pair
+
+
+7.	Check all the boxes under network and click  on launch instance 
+
+8.	Click on instances
+
+9.	Wait until you get 2 tests passes
+
+10.	Click on connect after checking the box
+11.	Copy ssh command
+ 
+12.	Open the terminal, Navigate to the path 
+Run the ssh command
+
+13.	Run the following commands
+
+14.	Open MAVEN WEB PROJECT REPO in github and copy http link
+Clone the repository
+
+15.	If your repository is in main run following
+
+execute above commands
+
+16.	Build docker image
+
+
+17.	Run the container
+
+18.	Copy public ipv4
+
+19.	Enter this url in browser and click enter
+ 
+
+If your app is not running goto security  and Click on security groups
+20.	Click on edit inbound rules
+
+21.	Click on add rule give port as 9090 and 0.0.0.0/0 click on save
+ 
+
+And refresh the page to check whether the web page has loaded or not
+
+
+If it is loaded you have successfully deployed you maven web project In your ec2 instance
+
+
+24. Run the following commands to stop the container 
+
+25. Terminate your instance
+ 
+
+26. End your lab
+ 
+
+
+
+
+
+Result: 
+By completing this experiment, you will have successfully created an AWS Academy learning account, deployed a project in the AWS cloud using an EC2 instance, and specifically deployed a Maven web project on an EC2 instance. This will enhance your understanding of cloud computing, AWS services, and the deployment process for cloud-based applications, equipping you with practical skills for cloud development and management.
+
+
+
+Aim: To create an AWS Academy learning account and deploy projects, including a Maven web project, in the AWS cloud using EC2 instances.
+
+Introduction:
+1.	AWS Academy Learning Account Creation:
+o	AWS Academy: AWS Academy provides higher education institutions with a curriculum and learning resources for cloud computing, preparing students for industry-recognized certifications and careers in the cloud.
+o	Account Creation: Creating an AWS Academy learning account gives you access to educational resources and AWS services for learning and project development.
+2.	Project Deployment in the AWS Cloud Using EC2 Instance:
+o	AWS EC2: Amazon Elastic Compute Cloud (EC2) is a web service that provides resizable compute capacity in the cloud, enabling you to run virtual servers and applications.
+o	Project Deployment: Deploying a project on an EC2 instance involves launching an instance, configuring it, and deploying your application to run in the cloud.
+3.	Maven Web Project Deployment in the AWS Cloud Using EC2 Instance:
+o	Maven Web Project: A web project built using Maven includes the necessary structure, dependencies, and build configurations for a Java web application.
+o	EC2 Deployment: Deploying a Maven web project on an EC2 instance involves setting up the instance, installing required software (e.g., JDK, web server), and configuring the application to run in the cloud environment.
+
+
+
+
