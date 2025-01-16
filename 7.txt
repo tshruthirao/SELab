@@ -1,0 +1,268 @@
+Here code for pipeline -script
+	
+Copy the code there
+-------------------------------------------------------------------------------------------------------------------------
+pipeline {
+    agent any
+    tools{
+        maven 'MAVEN-HOME'
+    }
+    stages {
+        stage('git repo & clean') {
+            steps {
+                //bat "rmdir  /s /q mavenjava"
+                bat "git clone provide your github link"
+                bat "mvn clean -f mavenjava"
+            }
+        }
+        stage('install') {
+            steps {
+                bat "mvn install -f mavenjava" #project name#
+            }
+        }
+        stage('test') {
+            steps {
+                bat "mvn test -f mavenjava"
+            }
+        }
+        stage('package') {
+            steps {
+                bat "mvn package -f mavenjava"
+            }
+        }
+    }
+}
+
+Creation of images and container ..pushing them into dockerhub
+Evaluation of previous experiments.
+Hands-on practice on docker for pulling image, creation of container ,running container, pushing it into docker hub, creation of image using the docker file.
+Creating images using DockerFile and pushing the created image into DockerHub.
+Upload the screenshots for above task and provide the link for docker hub
+
+Installation of the docker( Follow the installation PPT and download the docker)
+Sign In into Docker Hub 
+Click on personal-> continue with free 
+Go to gmail and verify your account 
+Once logged  into the DockerHub,there are no containers and Images in Docker Hub
+Create a folder on desktop as”Docker”
+Check Docker Version
+ docker –version
+RUN image HELLO-WORLD IMAGE 
+docker run hello-world
+CHECK IMAGES
+ docker images
+Pull Ubuntu Image from Docker Hub  
+docker pull ubuntu
+Run the image as docker container 
+docker run -it -d ubuntu
+Check the  all running and stopped containers  
+ docker ps –a
+During the execution of the container Ubuntu -> 
+copy the container ID
+To accessing/executing a running container (ubuntu) 
+docker exec -it 1c6072756052 bash
+Give echo message in the running container 
+root@1c6072756052:/# echo Welcome to docker demo  
+Welcome to docker demo  
+Exit from the running container  
+ root@1c6072756052:/# exit 
+exit 
+PS C:\Users>
+To stop the running container 
+ docker stop containerID 
+ PS C:\Users > docker stop 1c6072756052 
+1c6072756052 
+PS C:\Users >
+run ubuntu with echo 
+docker run –it ubantu bash root@1c6072756052:/# echo Bhargavi 
+Bhargavi 
+root@1c6072756052:/#
+  Pull the ubuntu image from the docker repository and run it as a container that will hprovide all the features of ubuntu
+$ docker search ubuntu    displays public images in ubuntu
+Pushing the image from local repository to docker hub
+Step1:create dockerhub account 
+Step2:login using dochub 
+PS C:\Users > docker login 
+Username:<< >> ( here give user name) 
+Password:<< >> ( here give user password) 
+Login Succeeded
+Restart image
+ $docker start containerID used to restart the container if it has stopped due to application    crash or if error occurred
+
+
+
+Creating Docker Image using Docker File
+Create two files, one file Dockerfile without extension and the other app.js (.js file contains Javascript code for execution on webpages)
+a)Creating a sample javascript file
+Type the following commands
+$ Vi app.js
+ Console.log(“Docker Image using Docker File”)
+Press Esc-> :wq-> to save and exit
+
+
+   b)Creating Docker Image using Docker File
+Type the following commands
+Node app.js will execute app.js file in node
+          
+$ Vi dockerfile
+   #getting base image alpine
+
+
+From node :alpine
+WORKDIR / bhargavikumbham
+COPY  . /bhargavikumbham
+CMD node app.jsi
+
+Press Esc-> :wq-> to save and exit
+
+$ docker  build –t myimage 
+    
+
+
+
+$ docker images 
+
+  myimage will display here
+Go to docker desktop-> local-> check myimage will exist-> click on run
+Diplays the console output as “Docker Image using Docker File”
+$ docker  tag myimage bhargavikumbham/myimage
+
+$ docker  push bhargavikumbham/myimage
+
+
+Go to desktop docker and check under the specified directory myimage will display
+$ docker  logout
+
+
+
+
+
+
+
+
+PS C:\Users > docker images 
+12) How to push images from local rep to docker hub rep 
+Step1:create dockerhub account 
+Step2:login using dochub 
+PS C:\Users > docker login 
+Username:<< >> ( here give user name) 
+Password:<< >> ( here give user password) 
+Login Succeeded 
+
+13) To restart image 
+$docker start containerID used to restart the container if it has stopped due to application crash or if error occurred 
+
+14) Working with container in interactive mode 
+docker container exec -it containerID 
+
+15) Troubleshooting containers using logs $docker logs 505174ea315 Helps to see what’s going on in container 
+
+16) Creating same image with different version in one application 
+docker run redis:latest 
+
+docker run redis:5.0 
+
+Here two redis image
+
+
+
+DOCKER COMPOSE
+
+How to Run It
+To run a multi-container setup like the one above:
+Save the file as docker-compose.yml.
+docker-compose up –d
+
+
+To stop the containers 
+       docker-compose down
+To scale the container
+docker-compose up --scale <service name>=2 -d
+
+
+Summary:
+Docker Compose: Simplifies managing multi-container applications.
+YAML: A readable format used for configuration files, where data is structured in key-value pairs and lists.
+A docker-compose.yml file defines services, images, ports, and other configurations to make running multiple containers easier.
+
+
+
+
+Minikube Automation Steps
+Step 1: Start Minikube Cluster
+Open your terminal and run the command:
+minikube start
+Step 2: Create and Manage Nginx Deployment
+Create Deployment:
+Command:
+kubectl create deployment mynginx --image=nginx
+Verify the deployment using:
+kubectl get deployments
+Ensure mynginx appears in the output.
+Expose Deployment as a Service:
+Command:
+kubectl expose deployment mynginx --type=NodePort --port=80 --target-port=80
+Step 3: Scale the Deployment
+Command: Scales the Nginx deployment to 4 replicas (pods).
+kubectl scale deployment mynginx --replicas=4
+Step 4: Access the Nginx App
+Using Port Forwarding:
+Command:
+kubectl port-forward svc/mynginx 8081:80
+Access the app via http://localhost:8081.
+If Error, use this option, Using Minikube Tunnel:
+Start the tunnel:
+minikube tunnel
+Retrieve the service URL:
+minikube service mynginx --url
+Open the provided URL in your browser.
+Step 5: Stop and Clean Up
+Stop Nginx Deployment:
+Commands:
+kubectl delete deployment mynginx
+kubectl delete service mynginx
+Stop Minikube (Optional):
+Command:
+minikube stop
+Delete Minikube Cluster (Optional):
+Command: minikube delete
+Nagios Automation Steps
+Step 1: Pull the Nagios Docker Image
+Open a terminal and run:
+docker pull jasonrivers/nagios:latest
+Step 2: Run Nagios
+Command:
+docker run --name nagiosdemo -p 8888:80 jasonrivers/nagios:latest
+Step 3: Access Nagios Dashboard
+Open your browser and navigate to:
+http://localhost:8888
+Login Credentials:
+Username: nagiosadmin
+Password: nagios
+Once logged in, explore:
+Hosts: View systems being monitored.
+Services: Check tasks being monitored (e.g., CPU usage).
+Alerts: Access recent notifications.
+Step 4: Monitoring Host Details
+Navigate to the Host Information Page:
+Select a host from the Hosts menu.
+Key Details:
+Host Status: Indicates if the system is UP or DOWN.
+Metrics: View CPU usage, memory status, and network activity.
+Actions: Reschedule checks, disable notifications, or schedule downtime.
+Step 5: Stop and Remove Nagios
+Stop the Container:
+Command:
+docker stop nagiosdemo
+Delete the Container:
+Command:
+docker rm nagiosdemo
+Remove the Image (Optional):
+List images:
+docker images
+Delete the Nagios image:
+docker rmi jasonrivers/nagios:latest
+
+Conclusion: In this week we learnt how to deploy pods in minikube and how to monitor our local system using Nagios tool
+
+

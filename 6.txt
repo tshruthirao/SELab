@@ -1,0 +1,46 @@
+Steps for Maven Java Automation:
+Step 1: Open Jenkins in local host: 8080/ and click on a new item present in the left side. 
+Step 2: Select a new Freestyle Project give name (eg. MavenJava_Build) and then click ok.
+Step 3: In description type e.g., Java Build demo, Scroll sown and in Source code management give the Git MavenJava repository URL of the project to be built.
+Step 4: Scroll down in Branches to build, Specify the Branch as */Main as it is in the GitHub 
+Step 5: Goto Build Steps -> Add Build Step-> Invoke top-level Maven targets, Type MAVEN_HOME in Maven version, Goals: Clean. 
+Step 6: Again, click Add Build Step-> Invoke top-level Maven targets-> Type MAVEN_HOME in Maven version, Goals: install. 
+Step 7: Click add post build actions-> select Archive the artifacts, Type **/* in Files to Archive.
+Step 8: Now click Add Post Build Action-> Build other projects.  In Projects to build, write MavenJava_Test and select Trigger only if build is stable.
+Step 9: Click on Apply and save.
+Step 10: Go to dashboard -> New item-> Freestyle Project, give project name as MavenJava_Test, then press on OK.
+Step 11: In description type Test demo and in Build environment, check the box with name “Delete the workspace before build starts”.
+Step 12: Click on Add Build Step-> copy the artifacts from another project.
+Step 13: Now Give project name: MavenJava_Build, Which build: Check the boxstable build only, Artifacts to copy: **/*.
+Step 14: Click Add Build Step-> Invoke top-level Maven targets-> Type MAVEN_HOME in Maven version, Goals: test.
+Step 15: Click on Post build actions->Archive the artifacts, in Files to archive type **/*.
+Step 16: Now click apply and save.  Now run the project.
+Steps for Maven Web Automation:
+Step 1: Open Jenkins in local host: 8080/ and click on a new item present in the left side. 
+Step 2: Select a new Freestyle Project give name MavenWeb_Build and then click ok.
+Step 3: In description type e.g., Web Build demo, Scroll sown and in Source code management give the Git MavenWeb repository URL of the project to be built.
+Step 4: Scroll down in Branches to build, Specify the Branch as */Main as it is in the GitHub 
+Step 5: Goto Build Steps -> Add Build Step-> Invoke top-level Maven targets, Type MAVEN_HOME in Maven version, Goals: Clean. 
+Step 6: Again, click Add Build Step-> Invoke top-level Maven targets-> Type MAVEN_HOME in Maven version, Goals: install. 
+Step 7: Click add post build actions-> select Archive the artifacts, Type **/* in Files to Archive.
+Step 8: Now click Add Post Build Action-> Build other projects.  In Projects to build, write MavenWeb_Test and select Trigger only if build is stable. Click on apply and save at the bottom.
+Step 9: Go to dashboard -> New item-> Freestyle Project, give project name as MavenWeb_Test, then press on OK.
+Step 10: In description type Test demo and in Build environment, check the box with name “Delete the workspace before build starts”.
+Step 11: Click on Add Build Step-> copy the artifacts from another project.
+Step 12: Give project name: MavenWeb_Build, Which build: Check the box stable build only, Artifacts to copy: **/*.
+Step 13: Click Add Build Step-> Invoke top-level Maven targets-> Type MAVEN_HOME in Maven version, Goals: test.
+Step 14: Click on Post build actions->Archive the artifacts, in Files to archive type **/*.
+Step 15: Add post build action->Build Other Projects->MavenWeb_Deploy, Apply and Save.
+Step 16: Go to dashboard -> New item-> Freestyle Project, give project name as MavenWeb_Deploy, then press on OK.
+Step 17: In description give Web Code Deploement, scroll down to Build environment, Check “Delete the workspace before build starts”.
+Step18: Goto Build Steps->Add Build Step-> copy the artifacts from another project.
+Step 19: Give project name: MavenWeb_Test, Which build: Check the box stable build only, Artifacts to copy: **/*.
+Step 20: Scroll down to post build actions-> Add post build action->Deploy war/ear to a container.
+Step 21: Write WAR/EAR File: **/*.war, Context path: Webpath, click on Add container-> Tomact 9.x remote, Click on admin, add credentials as username: admin and password: 1234, save.
+Step 22: Give Tomcat URL: https://localhost:8085/ , Click on apply and save.
+Step 23: Now click on “+” button present beside “All” in the dashboard, Give Name: MavenWeb_Pipeline, select Build pipeline view in the options shown.
+Step 24: Scroll down, goto Pipeline Flow->Layout->Based on upstream/downstream relationship-> Select initial job-> MavenWeb_Build, Apply and save.
+Step 25: Click the trigger to run the pipeline shown on the page for web application automation.
+Step 26: Now open tomcat homepage in another tab and check the manager app option present at the right side.
+Step 27: Click on /webpath option, and now output of MavenWeb project is seen in the tomcat server in a new tab.
+Conclusion: In this week we learnt installation of Jenkins and automating Maven projects through Jenkins.

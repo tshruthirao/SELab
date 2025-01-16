@@ -1,0 +1,54 @@
+   Create Maven-web-java project in eclipse & push into github
+
+Create the virtual machine (EC2--instance) in aws and connect to 
+Using Amazon EC2 eliminates your need to invest in hardware up front, so you can develop and deploy applications faster. 
+Ex : Launch ubuntu instnace
+Step 1: Login to AWS /canvas account
+Step 2: Services --  EC2
+Step 3: Choose region which is near ?  
+	Services -- EC2 --- Launch Instance 
+	Stage 1  --Name (Giving name to the machine) ubuntu
+	Stage 2  -- Select AMI  ( Note: Select free tier eligible ) ubuntu server
+	Stage 3   --  Architecture as 64-bit	  
+	Stage 4  --  Instance type ----  t2.micro(default 1 CPU,1 GB RAM)
+	Stage 5  --  Create a new keypair---a keypair will downloaded
+	Stage 6  -- Network Setting ----Create Security group  --  ( It deals with ports )
+			We have 0 to 65535  ports
+			Every port is dedicated to special purpose
+			HERE select http and https
+   Stage 7 -- Storage - 8GB ( Observation - we have root - it is same as C Drive)
+         Stage 8 --- click on launch instance
+    Stage 9: Number of instances ---1
++++++++++++++++++++++++++++++++
+Observation - One machines created.---once it is created select that instance and click on connect
+Here copy the ssh – i command from SSH client connect tab
+We can use powershell /gitbash /webconsole , to connect to ubuntu machine.
+NOTE:-
+To connect to above terminals we need to go into the path of the keypair.and 
+paste  the ssh -i command from the aws console
+IV .Clone the application from github, Write the Dockerfile
+ once connected to instance
+
+Step 1:-  install the docker
+	install docker ---apt-get update
+                            		     apt-get install docker.io
+                            apt-get install nano
+
+
+step 2:-  git clone <paste the github link of maven-web-java project>
+step 3:- Navigate to the path where your index.jsp is there….
+
+ Create the image
+
+Step 4:-  nano Dockerfile 
+
+
+V.  Run the image and access it with public ip of virtual machine
+
+Step 1:- build your image 
+	docker build –t <imagename> .(dot)
+Step 2:- check for images
+Step 3:- run image
+	docker  run –d  --name app-demo –p 6060:8080 <image name>
+Step:-4 Accessing the app by public ip of virtual machine
+Note:-if your are not able to connect change the inbound rules..
