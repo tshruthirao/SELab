@@ -44,3 +44,23 @@ Step 25: Click the trigger to run the pipeline shown on the page for web applica
 Step 26: Now open tomcat homepage in another tab and check the manager app option present at the right side.
 Step 27: Click on /webpath option, and now output of MavenWeb project is seen in the tomcat server in a new tab.
 Conclusion: In this week we learnt installation of Jenkins and automating Maven projects through Jenkins.
+
+
+Aim: To build CI/CD pipelines using Jenkins for Maven Java and web projects, including both freestyle and scripted pipelines with Poll SCM.
+Introduction:
+1.	Building the CI/CD Freestyle Pipeline Using Jenkins for Maven Java Project:
+o	CI/CD: Continuous Integration (CI) and Continuous Delivery (CD) are practices that involve automating the integration and deployment of code changes to improve software quality and delivery speed.
+o	Freestyle Pipeline: A freestyle pipeline in Jenkins is a flexible and easy-to-configure pipeline that allows you to build, test, and deploy applications.
+o	Maven Java Project: A Maven Java project uses Maven for managing dependencies and building Java applications.
+2.	Building the CI/CD Freestyle Pipeline Using Jenkins for Maven Web Project with Poll SCM:
+o	Maven Web Project: A web project built using Maven, typically involving Java servlets, JSP, and other web technologies.
+o	Poll SCM: Poll SCM is a Jenkins feature that periodically checks the source code repository for changes and triggers a build if changes are detected.
+o	Freestyle Pipeline for Web Project: Configuring a freestyle pipeline to automate the build and deployment of a Maven web project, with the additional step of polling the SCM for changes.
+3.	Building the CI/CD Scripted Pipeline Using Jenkins for Maven Java Project with Poll SCM:
+o	Scripted Pipeline: A scripted pipeline in Jenkins uses Groovy-based scripts to define the stages and steps of the CI/CD process, offering more control and flexibility compared to freestyle pipelines.
+o	Poll SCM: As with the freestyle pipeline, Poll SCM is used to trigger builds based on changes in the source code repository.
+o	Scripted Pipeline for Java Project: Creating a scripted pipeline for a Maven Java project, integrating Poll SCM to ensure the pipeline runs automatically when changes are detected.
+
+
+
+
